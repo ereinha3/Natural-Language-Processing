@@ -27,11 +27,6 @@ def get_sentences(file_paths):
 
 
 def train_hmm_smoothed(train_sents, alpha=0.1):
-    """
-    Train an HMM with add-alpha (Laplace) smoothing on transitions and emissions,
-    and build word->tag dictionary for restricting tag-space.
-    Returns log_pi, log_A, log_B, tagset, vocab, word_tag_dict.
-    """
     # Count occurrences
     start_counts = Counter()
     trans_counts = defaultdict(Counter)
@@ -87,11 +82,6 @@ def train_hmm_smoothed(train_sents, alpha=0.1):
     return log_pi, log_A, log_B, tagset, vocab, word_tag
 
 def viterbi_log(words, log_pi, log_A, log_B, tagset, word_tag):
-    """
-    Viterbi decoding in log-space with:
-      - add-alpha smoothed emission probs (with explicit <UNK>)
-      - restricted tag-space for seen words
-    """
     n = len(words)
     # DP tables
     V = [defaultdict(lambda: -math.inf) for _ in range(n)]
@@ -162,5 +152,5 @@ os.system("python scorer.py data/POS_dev.pos data/my_dev.pos")
 train_and_dev_sents = get_sentences(['data/POS_train.pos', 'data/POS_dev.pos'])
 pi, A, B, tagset, vocab, word_tag = train_hmm_smoothed(train_and_dev_sents)
 
-tag_file('data/POS_test.words', 'data/my_test.pos', pi, A, B, tagset, vocab, word_tag)
+tag_file('data/POS_test.words', 'my_test.pos', pi, A, B, tagset, vocab, word_tag)
 
