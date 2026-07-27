@@ -147,7 +147,7 @@ pi, A, B, tagset, vocab, word_tag = train_hmm_smoothed(train_sents)
 
 tag_file('data/POS_dev.words', 'data/my_dev.pos', pi, A, B, tagset, vocab, word_tag)
 
-os.system("python scorer.py data/POS_dev.pos data/my_dev.pos")
+os.system("python3 scorer.py data/POS_dev.pos data/my_dev.pos")
 
 train_and_dev_sents = get_sentences(['data/POS_train.pos', 'data/POS_dev.pos'])
 pi, A, B, tagset, vocab, word_tag = train_hmm_smoothed(train_and_dev_sents)

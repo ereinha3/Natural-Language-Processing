@@ -1,0 +1,26 @@
+# Generated artifacts — all rebuilt by train.sh / dev.sh / test.sh / main.py
+
+# MEMM feature files, trained model, and tagger output
+NER_MEMM/maxent/*.feat
+NER_MEMM/maxent/NER-MEMM.model
+NER_MEMM/maxent/dev.txt
+NER_MEMM/maxent/test.txt
+NER_MEMM/maxent/output*.txt
+NER_MEMM/maxent/output*.name
+NER_MEMM/maxent/test_output.txt
+
+# HMM tagger output
+HMM_and_Viterbi/data/my_dev.pos
+HMM_and_Viterbi/my_test.pos
+
+# Archives
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS
+.DS_Store
